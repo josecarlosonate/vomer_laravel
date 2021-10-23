@@ -32,4 +32,14 @@ class Product extends Model
         'city_id',
         'updated_at'
     ];
+
+    // relacion con el provedor 
+    public function provedor(){
+        return $this->belongsTo(User::class,'user_id');
+    }
+
+    //traer imagen del producto
+    public function image(){
+        return $this->belongsTo(Image::class,'id','product_id');
+    }
 }

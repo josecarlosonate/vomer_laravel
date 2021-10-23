@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Productcontroller;
+use App\Http\Controllers\Userproductcontroller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Usercontroller;
@@ -14,5 +16,11 @@ use App\Http\Controllers\Usercontroller;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
+//todos los usuarios
 Route::resource('providers', Usercontroller::class,['only' => ['index','show']]);
+//productos de un usuario
+Route::resource('providers.products', Userproductcontroller::class,['only' => ['index']]);
+//ruta de producto
+Route::resource('products', Productcontroller::class,['only' => ['index','show']]);
+
+

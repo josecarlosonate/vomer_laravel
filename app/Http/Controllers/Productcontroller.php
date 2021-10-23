@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
-class Usercontroller extends Controller
+class Productcontroller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,21 +14,9 @@ class Usercontroller extends Controller
      */
     public function index()
     {
-        //acceder a todos los provedores (usuarios con productos)
-        /* return User::join('product', 'product.user_id', '=', 'user.id')
-                        ->select('user.id','user.first_name','user.image','user.phone','user.description')
-                        ->distinct('user.id')
-                        ->where('user.state', '=', 'ACTIVE')
-                        ->where('product.state', '=', 'ACTIVE')
-                        ->orderBy('user.id', 'ASC')
-                        ->get(); */
-
-        $users = User::has('products')
-                    ->where('state','ACTIVE')
-                    ->orderBy('id', 'ASC')
-                    ->get();
-        return response()->json(['data' => $users],200);
-        
+        //todos los productos
+        $products = Product::all();
+        return $products;
     }
 
     /**
@@ -60,8 +48,10 @@ class Usercontroller extends Controller
      */
     public function show($id)
     {
-        //acceder a un provedor en especifico
-        return User::findOrFail($id);
+        //un producto en especifico
+        $product = Product::findOrFail($id);
+        return response()->json(['data' => $product,'image' => $product->image],200);
+        
     }
 
     /**

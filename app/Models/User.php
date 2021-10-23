@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Sanctum\HasApiTokens;
+use PhpParser\Node\Expr\FuncCall;
 
 class User extends Authenticatable
 {
@@ -85,5 +86,13 @@ class User extends Authenticatable
     public function adminlte_profile_url(){
         return 'profile/username';
     }
+
+    // relacion con el producto 
+    // un usuario puede tener varios productos
+    public function products(){
+        return $this->hasMany(Product::class);
+    }
+
+    
 
 }
