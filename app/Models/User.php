@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -41,7 +42,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'pass',
+        'password',
         'remember_token',
     ];
 
@@ -53,4 +54,36 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Recupero url de la imagen de perfil
+     *
+     * 
+     */
+    public function adminlte_image(){
+        $img = Auth::user()->image;
+        if(!$img){
+            return 'https://picsum.photos/300/300';
+        }
+        return $img;
+    }
+
+    /**
+     * Recupero el rol del usuario
+     *
+     * 
+     */
+    public function adminlte_desc(){
+        return Auth::user()->first_name.' '.Auth::user()->last_name;
+    }
+
+    /**
+     * Ir a perfil del usuario
+     *
+     * 
+     */
+    public function adminlte_profile_url(){
+        return 'profile/username';
+    }
+
 }
