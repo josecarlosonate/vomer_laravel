@@ -17,7 +17,7 @@ use App\Http\Controllers\Usercontroller;
 |
 */
 //todos los usuarios
-Route::resource('providers', Usercontroller::class,['only' => ['index','show']]);
+Route::resource('providers', Usercontroller::class,['only' => ['index','show']])->middleware('CORS');
 //productos de un usuario
 Route::resource('providers.products', Userproductcontroller::class,['only' => ['index']]);
 //ruta de producto

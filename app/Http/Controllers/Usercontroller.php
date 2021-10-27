@@ -15,19 +15,19 @@ class Usercontroller extends Controller
     public function index()
     {
         //acceder a todos los provedores (usuarios con productos)
-        /* return User::join('product', 'product.user_id', '=', 'user.id')
-                        ->select('user.id','user.first_name','user.image','user.phone','user.description')
+        $users = User::join('product', 'product.user_id', '=', 'user.id')
+                        ->select('user.id','user.first_name','user.last_name','user.image','user.phone','user.description','user.created_at')
                         ->distinct('user.id')
                         ->where('user.state', '=', 'ACTIVE')
                         ->where('product.state', '=', 'ACTIVE')
                         ->orderBy('user.id', 'ASC')
-                        ->get(); */
+                        ->get();
 
-        $users = User::has('products')
+        /* $users = User::has('products')
                     ->where('state','ACTIVE')
                     ->orderBy('id', 'ASC')
-                    ->get();
-        return response()->json(['data' => $users],200);
+                    ->get();*/
+        return response()->json(['data' => $users],200); 
         
     }
 

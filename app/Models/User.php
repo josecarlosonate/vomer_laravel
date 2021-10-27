@@ -54,8 +54,14 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'created_at' => 'datetime:d-m-Y',
     ];
 
+    public function getFirstNameAttribute($value)
+    {
+        return ucfirst($value);
+    }
+    
     /**
      * Recupero url de la imagen de perfil
      *
