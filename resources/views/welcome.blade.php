@@ -659,7 +659,7 @@
             <h6> &copy; <b>VOMERC</b> Todos los derechos reservados - info@vomerc.com - juridica@vomerc.com
                 <br>
             </h6>
-            <p class="miNombre">Desarrollador pagina Jose Rodriguez - tel: 324 409 5054</p>
+            <p class="miNombre">Desarrollador pagina ING Jose Rodriguez - tel: 324 409 5054</p>
         </div>
     </footer>
 
